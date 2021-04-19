@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response } from 'express';
-import config from '../config';
-import { AdminApi, Configuration } from '@ory/kratos-client';
-import { isString, redirectOnSoftError } from '../helpers/sdk';
+import { NextFunction, Request, Response } from 'express'
+import config from '../config'
+import { AdminApi, Configuration } from '@ory/kratos-client'
+import { isString, redirectOnSoftError } from '../helpers/sdk'
 
 // Variable config has keys:
 // kratos: {
@@ -18,29 +18,31 @@ import { isString, redirectOnSoftError } from '../helpers/sdk';
 //   public: 'https://ory-kratos-public.example-org.vpc',
 // },
 
-const kratos = new AdminApi(new Configuration({ basePath: config.kratos.admin }));
+const kratos = new AdminApi(
+  new Configuration({ basePath: config.kratos.admin })
+)
 
 const settingsHandler = (req: Request, res: Response, next: NextFunction) => {
-  const flow = req.query.flow;
+  const flow = req.query.flow
   // The flow ID is used to identify the account settings flow and
   // return data like the csrf_token and so on.
   if (!flow || !isString(flow)) {
-    console.log('No flow found in URL, initializing flow.');
-    res.redirect(`${config.kratos.browser}/self-service/settings/browser`);
-    return;
+    console.log('No flow found in URL, initializing flow.')
+    res.redirect(`${config.kratos.browser}/self-service/settings/browser`)
+    return
   }
 
   kratos
     .getSelfServiceSettingsFlow(flow)
     .then(({ status, data: flow }) => {
       if (status !== 200) {
-        return Promise.reject(flow);
+        return Promise.reject(flow)
       }
 
       // Render the data using a view (e.g. Jade Template):
-      res.render('settings', flow);
+      res.render('settings', flow)
     })
-    .catch(redirectOnSoftError(res, next, '/self-service/settings/browser'));
-};
+    .catch(redirectOnSoftError(res, next, '/self-service/settings/browser'))
+}
 
-export default settingsHandler;
+export default settingsHandler

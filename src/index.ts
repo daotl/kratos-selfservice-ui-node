@@ -64,7 +64,7 @@ app.engine(
       jsonPretty: (context: any) => JSON.stringify(context, null, 2),
       onlyNodes,
       getTitle,
-      toUiNodePartial: toUiNodePartial,
+      toUiNodePartial,
       logoutUrl: () =>
         `${config.kratos.browser}/self-service/browser/flows/logout`,
     },

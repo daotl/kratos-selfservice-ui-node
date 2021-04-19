@@ -9,7 +9,7 @@ export const isString = (x: any): x is string => typeof x === 'string'
 export const redirectOnSoftError = (
   res: Response,
   next: NextFunction,
-  redirectTo: string
+  redirectTo: string,
 ) => (err: AxiosError) => {
   if (!err.response) {
     next(err)

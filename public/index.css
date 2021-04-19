@@ -71,31 +71,31 @@ body {
     margin: 0 0.5rem;
 }
 
-.content .header .icon-actions .fork path {
-    fill: var(--primary-main);
-    transition: fill 0.1s ease-in-out;
-}
+/*.content .header .icon-actions .fork path {*/
+/*    fill: var(--primary-main);*/
+/*    transition: fill 0.1s ease-in-out;*/
+/*}*/
 
-.content .header .icon-actions .fork:hover path {
-    fill: var(--primary-light);
-}
+/*.content .header .icon-actions .fork:hover path {*/
+/*    fill: var(--primary-light);*/
+/*}*/
 
-.content .header .icon-actions .fork a,
-.content .header .icon-actions .fork a:visited {
-    color: var(--primary-main);
-    text-decoration: none;
-    transition: color 0.1s ease-in-out;
-    font-size: 0.666em;
-    line-height: 1em;
-}
+/*.content .header .icon-actions .fork a,*/
+/*.content .header .icon-actions .fork a:visited {*/
+/*    color: var(--primary-main);*/
+/*    text-decoration: none;*/
+/*    transition: color 0.1s ease-in-out;*/
+/*    font-size: 0.666em;*/
+/*    line-height: 1em;*/
+/*}*/
 
-.content .header .icon-actions .fork a div {
-    display: inline-block;
-}
+/*.content .header .icon-actions .fork a div {*/
+/*    display: inline-block;*/
+/*}*/
 
-.content .header .icon-actions .fork a:hover {
-    color: var(--primary-light);
-}
+/*.content .header .icon-actions .fork a:hover {*/
+/*    color: var(--primary-light);*/
+/*}*/
 
 .content .header .logo {
     height: 2rem;

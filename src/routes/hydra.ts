@@ -11,6 +11,9 @@ import {
 import { isString } from '../helpers/sdk'
 import crypto from 'crypto'
 
+const configBaseUrl =
+  config.baseUrl && config.baseUrl != '/' ? config.baseUrl : ''
+
 // Client for interacting with Hydra's Admin API
 const hydraClient = new HydraAdminApi(
   new HydraConfiguration({ basePath: config.hydra.admin })
@@ -51,8 +54,6 @@ const redirectToLogin = (req: Request, res: Response, next: NextFunction) => {
       next(error)
       return
     }
-    const configBaseUrl =
-      config.baseUrl && config.baseUrl != '/' ? config.baseUrl : ''
 
     console.debug('Return to: ', {
       url: req.url,
@@ -61,7 +62,9 @@ const redirectToLogin = (req: Request, res: Response, next: NextFunction) => {
       'kratos.browser': config.kratos.browser,
     })
     const baseUrl = configBaseUrl || `${req.protocol}://${req.headers.host}`
-    const returnTo = new URL(req.url, baseUrl)
+    const returnTo = new URL(
+      (baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl) + req.url
+    )
     returnTo.searchParams.set('hydra_login_state', state)
     console.debug(`returnTo: "${returnTo.toString()}"`, returnTo)
 
@@ -269,6 +272,11 @@ export const hydraGetConsent = (
       }
 
       // If consent can't be skipped we MUST show the consent UI.
+      const baseUrl = configBaseUrl || `${req.protocol}://${req.headers.host}`
+      const submitUrl = new URL(
+        (baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl) +
+        '/auth/hydra/consent'
+      )
       res.render('consent', {
         csrfToken: req.csrfToken(),
         challenge: challenge,
@@ -277,6 +285,7 @@ export const hydraGetConsent = (
         requested_scope: body.requested_scope,
         user: body.subject,
         client: body.client,
+        submitPath: submitUrl.pathname,
       })
     })
     // This will handle any error that happens when making HTTP calls to hydra

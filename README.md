@@ -1,6 +1,8 @@
 # ORY Kratos ExpressJS Self-Service UI Reference
 
-[![CircleCI](https://circleci.com/gh/ory/kratos-selfservice-ui-node.svg?style=badge)](https://circleci.com/gh/ory/kratos-selfservice-ui-node)
+DAOT Lab's fork of [ory/kratos-selfservice-ui-node](https://github.comory/kratos-selfservice-ui-node).
+
+[![CircleCI](https://circleci.com/gh/daotl/kratos-selfservice-ui-node.svg?style=badge)](https://circleci.com/gh/daotl/kratos-selfservice-ui-node)
 
 This is an exemplary Self Service UI for [ORY Kratos](https://github.com/ory/kratos) Self Service features:
 

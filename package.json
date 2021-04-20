@@ -5,7 +5,9 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",
+    "build:debug": "tsc -p tsconfig.debug.json",
     "serve": "node lib/index.js",
+    "serve:debug": "node --inspect=0.0.0.0:9229 lib/index.js",
     "start": "ts-node-dev --watch public,views --respawn src/index.ts",
     "start:stub": "cross-env NODE_ENV=stub npm start",
     "test": "npm-run-all build",

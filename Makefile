@@ -4,6 +4,10 @@ rand := $(shell openssl rand -hex 6)
 docker:
 		docker build -t daotl/kratos-selfservice-ui-node:latest .
 
+.PHONY: docker-debug
+docker-debug:
+		docker build -t daotl/kratos-selfservice-ui-node:latest-debug -f debug.Dockerfile .
+
 .PHONY: build-sdk
 build-sdk:
 		(cd $$KRATOS_DIR; make sdk)

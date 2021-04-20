@@ -46,8 +46,12 @@ export default (req: Request, res: Response) => {
   )
 
   const ai = authInfo(req as UserRequest)
+  const session = ai.claims.session
+  const traits = session.identity.traits
+  const user = traits.nickname || traits.username || traits.email
   res.render('dashboard', {
-    session: ai.claims.session,
+    user,
+    session,
     token: ai,
     headers: `GET ${req.path} HTTP/1.1
 

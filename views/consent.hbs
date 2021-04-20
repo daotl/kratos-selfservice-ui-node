@@ -1,9 +1,14 @@
 <div class="auth">
     <div class="container">
         {{> icon_logo}}
-        <h5 class="subheading">Welcome to the example consent page!</h5>
+        <h5 class="subheading">Authorize {{client.client_name}}</h5>
         <form action="{{submitPath}}" method="POST">
-            <p style="margin-bottom: 15px">Hi {{user}}, application <strong>{{client.client_name}}</strong> wants access resources on your behalf and to:</p>
+          <p style="margin-bottom: 15px"><strong>{{client.client_name}}</strong>
+            {{#if client.owner}}
+              by <strong><a href="{{client.client_uri}}">{{client.owner}}</a></strong>
+            {{/if}}
+            wants to access your <strong>{{user}}</strong> account
+          </p>
 
             <input name="challenge" type="hidden" value={{challenge}} />
             <input name="_csrf" type="hidden" value={{csrfToken}} />

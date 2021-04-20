@@ -100,7 +100,11 @@ if (process.env.NODE_ENV === 'stub') {
       challenge: 'challenge',
       requested_scope: ['scope1', 'scope2'],
       user: 'response.subject',
-      client: 'response.client',
+      client: {
+        client_name: 'Kratos',
+        owner: "ORY",
+        client_uri: "https://www.ory.sh/",
+      },
     })
   })
 } else {

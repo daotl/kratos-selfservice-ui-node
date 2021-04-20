@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import config, { SECURITY_MODE_STANDALONE } from '../config'
-import { Configuration, PublicApi, Session } from '@ory/kratos-client'
+import { Configuration, Identity, PublicApi, Session } from '@ory/kratos-client';
 import {
   AcceptConsentRequest,
   AcceptLoginRequest,
@@ -272,6 +272,13 @@ export const hydraGetConsent = (
       }
 
       // If consent can't be skipped we MUST show the consent UI.
+      let user =  body.subject
+      const context = body.context
+      const identity = context && (context as any).identity as Identity
+      if (identity) {
+        const traits = identity.traits as any
+        user = traits.nickname || traits.username || user
+      }
       const baseUrl = configBaseUrl || `${req.protocol}://${req.headers.host}`
       const submitUrl = new URL(
         (baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl) +
@@ -283,7 +290,7 @@ export const hydraGetConsent = (
         // We have a bunch of data available from the response, check out the API docs to find what these values mean
         // and what additional data you have available.
         requested_scope: body.requested_scope,
-        user: body.subject,
+        user,
         client: body.client,
         submitPath: submitUrl.pathname,
       })

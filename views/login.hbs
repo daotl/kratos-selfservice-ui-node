@@ -1,20 +1,20 @@
 <div class="auth">
-    <div class="container" id="login">
-        {{> icon_logo}}
-        <h5 class="subheading">Login with DAOT Team account!</h5>
+  <div class="container" id="login">
+    {{> icon_logo}}
+    <h5 class="subheading">Login with DAOT Team account!</h5>
 
-        {{> messages messages=messages className="global"}}
+    {{> messages messages=messages className="global"}}
 
-        <div id="ui">
-            {{> ui ui=ui}}
-        </div>
-
-        <hr class="divider">
-
-        <div class="alternative-actions">
-            <!-- <a href="auth/registration">Recover password</a> -->
-            <a href="{{pathPrefix}}auth/registration">Register a new account</a>
-            <a href="{{pathPrefix}}recovery">Reset your password</a>
-        </div>
+    <div id="ui">
+      {{> ui ui=ui}}
     </div>
+
+    <hr class="divider">
+
+    <div class="alternative-actions">
+      <!-- <a href="auth/registration">Recover password</a> -->
+      <a href="{{pathPrefix}}auth/registration">Register a new account</a>
+      <a href="{{pathPrefix}}recovery">Reset your password</a>
+    </div>
+  </div>
 </div>

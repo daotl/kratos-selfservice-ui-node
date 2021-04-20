@@ -1,6 +1,6 @@
 module.exports = {
   'traits.email': {
-    title: 'Email (@dao.tl)',
+    title: 'Email (@internetapi.cn)',
     position: 1,
   },
   password: {
@@ -12,11 +12,11 @@ module.exports = {
     position: 3,
   },
   'traits.name': {
-    title: 'Name',
+    title: 'Name (中文姓名)',
     position: 4,
   },
   'traits.nickname': {
-    title: 'Nickname',
+    title: 'English name, or nickname',
     position: 5,
   },
   'traits.phone_number': {
@@ -28,7 +28,7 @@ module.exports = {
     position: 0,
   },
   to_verify: {
-    title: 'Your @dao.tl email address',
+    title: 'Your @internetapi.cn email address',
     position: 0,
   },
 }

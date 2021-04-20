@@ -20,6 +20,8 @@ RUN if [ "$LINK" == "true" ]; then (cd ./contrib/sdk/generated; rm -rf node_modu
 
 RUN npm run build
 
+VOLUME /etc/kratos-selfservice-ui-node /usr/src/app/config
+
 USER 10000
 
 ENTRYPOINT npm run serve

@@ -3,6 +3,7 @@ import {
   UiNodeAnchorAttributes,
   UiNodeTextAttributes,
 } from '@ory/kratos-client/api'
+const translations = require('../../config/translations')
 
 const ui: { [key: string]: { title: string } } = {
   // You could add custom translations here if you want to:
@@ -10,6 +11,7 @@ const ui: { [key: string]: { title: string } } = {
   // 'traits.email': {
   //   title: 'E-Mail',
   // },
+  ...translations,
 }
 
 type Translations = typeof ui
